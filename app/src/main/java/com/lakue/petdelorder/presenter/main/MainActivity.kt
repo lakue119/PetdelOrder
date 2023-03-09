@@ -1,20 +1,30 @@
-package com.lakue.petdelorder
+package com.lakue.petdelorder.presenter.main
 
+import android.content.Intent
 import android.content.res.AssetManager
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanIntentResult
+import com.journeyapps.barcodescanner.ScanOptions
 import com.lakue.petdelorder.databinding.ActivityMainBinding
+import com.lakue.petdelorder.domain.Order
+import com.lakue.petdelorder.presenter.barcode.BarcodeActivity
+import com.lakue.petdelorder.presenter.order.OrderWebActivity
 import com.opencsv.CSVReader
 import com.opencsv.exceptions.CsvException
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
+import java.lang.StringBuilder
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadData()
+
+        binding.tvBarcode.setOnClickListener {
+            startActivity(Intent(this, BarcodeActivity::class.java))
+        }
     }
 
     @Throws(IOException::class, CsvException::class)
@@ -31,11 +45,18 @@ class MainActivity : AppCompatActivity() {
         val csvReader = CSVReader(InputStreamReader(inputStream, "UTF-8"))
         val allContent = csvReader.readAll() as List<Array<String>>
         for (content in allContent) {
-            val sb = StringBuilder("")
-            Log.d(
-                "csv",
-                "이름 : " + content[0] + " 가격: " + content[1] + " 바코드: " + content[2] + " 링크: " + content[3]
+            orders.add(
+                Order(
+                    name = content[0],
+                    barcode = content[2],
+                    url = content[3]
+                )
             )
         }
+    }
+
+    companion object {
+        val orders = arrayListOf<Order>()
+        val orderTxt = StringBuilder()
     }
 }

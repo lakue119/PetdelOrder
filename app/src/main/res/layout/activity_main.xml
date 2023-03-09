@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".presenter.main.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,5 +20,18 @@
             app:popupTheme="@style/Theme.PetdelOrder.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:text="검색"
+        android:textSize="36dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBarcode"
+        android:text="바코드"
+        android:textSize="36dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
