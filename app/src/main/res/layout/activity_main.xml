@@ -22,6 +22,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSearch"
         android:text="검색"
         android:textSize="36dp"
         android:layout_width="150dp"

@@ -13,6 +13,7 @@ import com.lakue.petdelorder.databinding.ActivityMainBinding
 import com.lakue.petdelorder.domain.Order
 import com.lakue.petdelorder.presenter.barcode.BarcodeActivity
 import com.lakue.petdelorder.presenter.order.OrderWebActivity
+import com.lakue.petdelorder.presenter.search.SearchActivity
 import com.opencsv.CSVReader
 import com.opencsv.exceptions.CsvException
 import java.io.IOException
@@ -35,6 +36,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvBarcode.setOnClickListener {
             startActivity(Intent(this, BarcodeActivity::class.java))
+        }
+        binding.tvSearch.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
         }
     }
 
