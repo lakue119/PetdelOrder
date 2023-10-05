@@ -27,6 +27,7 @@
             android:name=".presenter.barcode.BarcodeActivity"
             android:exported="false"
             android:label="@string/title_activity_barcode"
+            android:launchMode="singleTop"
             android:theme="@style/Theme.PetdelOrder.NoActionBar" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
@@ -48,6 +49,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="ocr" />
     </application>
 
 </manifest>
