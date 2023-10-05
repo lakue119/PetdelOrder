@@ -27,7 +27,6 @@
             android:name=".presenter.barcode.BarcodeActivity"
             android:exported="false"
             android:label="@string/title_activity_barcode"
-            android:launchMode="singleTop"
             android:theme="@style/Theme.PetdelOrder.NoActionBar" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
